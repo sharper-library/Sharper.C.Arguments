@@ -1,0 +1,19 @@
+{
+    "version": "1.0-*",
+    "description": "A testing library",
+    "authors": [
+        "Jeremy Hughes <jedahu@gmail.com>"
+    ],
+    "packOptions": {
+        "projectUrl": "https://github.com/sharper-library/Sharper.C.Arguments",
+        "licenseUrl": "https://raw.githubusercontent.com/sharper-library/Sharper.C.Arguments/master/LICENSE.txt"
+    },
+    "dependencies": {},
+    "frameworks": {
+        "netstandard1.3": {
+            "dependencies": {
+                "NETStandard.Library": "1.5.0-rc2-*"
+            }
+        }
+    }
+}
