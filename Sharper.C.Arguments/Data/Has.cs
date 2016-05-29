@@ -7,7 +7,7 @@ namespace Sharper.C.Data
 
     public static class Has
     {
-        public static Provider<A> GetProvider<A>(this Has<A> h)
+        public static Provider<A> ObtainProvider<A>(this Has<A> h)
         =>  h.GetProvider;
 
         public static A Obtain<A>(this Has<A> h)
