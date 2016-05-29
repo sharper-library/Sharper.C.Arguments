@@ -11,7 +11,7 @@ namespace Sharper.C.Data
         {   value = new Lazy<A>(create);
         }
 
-        public A Get
+        public A Provide
         =>  value.Value;
     }
 }

@@ -11,7 +11,7 @@ namespace Sharper.C.Data
         {   this.create = create;
         }
 
-        public A Get
+        public A Provide
         =>  create();
     }
 }
