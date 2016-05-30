@@ -35,5 +35,10 @@ namespace Sharper.C.Data
         public static Provider<A> Cast<A, B>(this Provider<B> p)
           where B : A
         =>  new Provider<A>(() => p.Provide);
+
+        public static Provider<A> WithoutTag<A, T>
+          ( this Provider<Tagged<A, T>> p
+          )
+        =>  p.Map(x => x.Untag);
     }
 }
