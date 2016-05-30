@@ -15,10 +15,10 @@ namespace Sharper.C.Data
         public static Provider<A> ObtainProvider<A>(this Has<A> h)
         =>  h.GetProvider;
 
-        public static Provider<A, T> ObtainProvider<A, T>
+        public static Provider<Tagged<A, T>> ObtainProvider<A, T>
           ( this Has<Tagged<A, T>> h
           )
-        =>  h.GetProvider.ToTagged();
+        =>  h.GetProvider;
 
         public static A Obtain<A>(this Has<A> h)
         =>  h.GetProvider.Provide;
