@@ -2,23 +2,19 @@ using System;
 
 namespace Sharper.C.Data
 {
-    public interface Provider<A>
-    {
-        A Provide { get; }
-    }
+    public delegate A Provider<out A>();
 
     public static class Provider
     {
-        public static SingletonProvider<A> Singleton<A>(Func<A> create)
-        =>  new SingletonProvider<A>(create);
+        public static Provider<A> Singleton<A>(Func<A> create)
+        {   var la = new Lazy<A>(create);
+            return () => la.Value;
+        }
 
-        public static TransientProvider<A> Transient<A>(Func<A> create)
-        =>  new TransientProvider<A>(create);
+        public static Provider<A> Transient<A>(Func<A> create)
+        =>  () => create();
 
-        public static Func<A, SingletonProvider<B>> Singleton<A, B>(Func<A, B> create)
-        =>  a => new SingletonProvider<B>(() => create(a));
-
-        public static Func<A, TransientProvider<B>> Transient<A, B>(Func<A, B> create)
-        =>  a => new TransientProvider<B>(() => create(a));
+        public static Provider<B> Map<A, B>(this Provider<A> p, Func<A, B> f)
+        =>  Transient(() => f(p()));
     }
 }
