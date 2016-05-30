@@ -32,7 +32,7 @@ namespace Sharper.C.Data
         public static Provider<A> Transient<A>(Func<A> create)
         =>  new Provider<A>(create);
 
-        public static Provider<A> Cast<A, B>(this Provider<B> p)
+        public static Provider<A> Cast<B, A>(this Provider<B> p)
           where B : A
         =>  new Provider<A>(() => p.Provide);
 
