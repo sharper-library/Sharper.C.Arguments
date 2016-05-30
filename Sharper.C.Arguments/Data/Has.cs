@@ -11,9 +11,9 @@ namespace Sharper.C.Data
         =>  h.GetProvider;
 
         public static A Obtain<A>(this Has<A> h)
-        =>  h.GetProvider();
+        =>  h.GetProvider.Provide;
 
         public static A Obtain<A, T>(this Has<Tagged<A, T>> h)
-        =>  h.GetProvider().Untag;
+        =>  h.GetProvider.Provide.Untag;
     }
 }
