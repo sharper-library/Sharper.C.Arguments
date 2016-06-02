@@ -20,6 +20,9 @@ namespace Sharper.C.Data
 
         public Provider<Tagged<A, T>> WithTag<T>()
         =>  Map(Tagged.Tag<A, T>);
+
+        public static implicit operator A(Provider<A> p)
+        =>  p.Provide;
     }
 
     public static class Provider
